@@ -1,5 +1,7 @@
+"use client";
 import { Carousel } from "@/components/carousel/Carousel";
 import { Header } from "@/components/header/Header";
+import { InfoSection } from "@/components/info-section/InfoSection";
 
 export default function Home() {
   return (
@@ -8,6 +10,7 @@ export default function Home() {
         <Header />
       </div>
       <Carousel />
+      <InfoSection />
     </div>
   );
 }
