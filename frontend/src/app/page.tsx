@@ -1,7 +1,10 @@
 "use client";
+
 import { Carousel } from "@/components/carousel/Carousel";
 import { Header } from "@/components/header/Header";
-import { InfoSection } from "@/components/info-section/InfoSection";
+import { SaleMealsSection } from "@/components/section/SaleMealsSection";
+import { InfoSection } from "@/components/section/InfoSection";
+import { Footer } from "@/components/footer/Footer";
 
 export default function Home() {
   return (
@@ -11,6 +14,8 @@ export default function Home() {
       </div>
       <Carousel />
       <InfoSection />
+      <SaleMealsSection />
+      <Footer />
     </div>
   );
 }
