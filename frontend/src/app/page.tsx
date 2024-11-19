@@ -9,13 +9,9 @@ import { Footer } from "@/components/footer/Footer";
 export default function Home() {
   return (
     <div className=" flex flex-col justify-center items-center">
-      <div className=" container  max-w-[1200px]">
-        <Header />
-      </div>
       <Carousel />
       <InfoSection />
       <SaleMealsSection />
-      <Footer />
     </div>
   );
 }
