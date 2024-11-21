@@ -1,6 +1,5 @@
 "use client";
-import * as React from "react";
-import Alert from "@mui/material/Alert";
+
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { PineconeLogo } from "../icons/PineconeLogo";
 import Link from "next/link";
