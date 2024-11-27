@@ -1,6 +1,6 @@
 import { User } from "../model/user.js";
 
-const createUser = async (request, response) => {
+const createUser = async (req, response) => {
   const result = await User.create({
     name: "Lhagvaa10",
     email: "Lhagvaa@gmail.com",
@@ -14,7 +14,7 @@ const createUser = async (request, response) => {
   });
 };
 
-const getAllUsers = async (request, response) => {
+const getAllUsers = async (req, response) => {
   const result = await User.find();
 
   response.json({

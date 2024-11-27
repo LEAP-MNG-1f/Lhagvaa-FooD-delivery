@@ -1,8 +1,9 @@
 import express from "express";
 
 // import dotenv from "dotenv";
-import userRouter from "./routes/userRoute.js";
+import userRouter from "./routes/user.Route.js";
 import mongoose from "mongoose";
+import categoryRouter from "./routes/category.Route.js";
 
 mongoose.connect(
   "mongodb+srv://Lhagvaa0102:Lhagvaa.0102@leap0102.k0ghj.mongodb.net/food-delivery"
@@ -11,6 +12,8 @@ const server = express();
 const PORT = 8000;
 
 server.use("/api", userRouter);
+
+server.use("/api", categoryRouter);
 
 server.listen(PORT, () => {
   console.log(`http:localhost:${PORT} ajillaj ehelle`);
