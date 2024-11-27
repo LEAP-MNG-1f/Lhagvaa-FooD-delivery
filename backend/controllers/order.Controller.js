@@ -1,30 +1,41 @@
-// import { Order } from "../model/order";
+import { Order } from "../model/order.js";
 
-// const createOrder = async (req, response) => {
-//   const result = await Order.create({
-//     userID: "67440017fcc381f2c42c4b51",
-//     orderNumber: 1,
-//     foodsId: "",
-//     totalPrice: "1000",
-//     process: "active",
-//     createdDate: ``,
-//     district: "BZD",
-//     khoroo: "6",
-//     Apartment: "GSA",
-//   });
-//   response.json({
-//     succes: true,
-//     data: result,
-//   });
-// };
+const createOrder = async (req, response) => {
+  try {
+    const {
+      userId,
+      orderNumber,
+      foodIds,
+      totalPrice,
+      district,
+      khoroo,
+      apartment,
+    } = req.body;
+    const result = await Order.create({
+      userId,
+      orderNumber,
+      foodIds,
+      totalPrice,
+      district,
+      khoroo,
+      apartment,
+    });
+    response.status(201).json({
+      succes: true,
+      data: result,
+    });
+  } catch (error) {
+    response.status(501).json({ error: "error cant create order" });
+  }
+};
 
-// const getAllOrders = async (req, response) => {
-//   const result = await Order.find().populate("userId").populate("foodsId");
+const getAllOrders = async (req, response) => {
+  const result = await Order.find().populate("userId").populate("foodIds");
 
-//   response.json({
-//     succes: true,
-//     data: result,
-//   });
-// };
+  response.json({
+    succes: true,
+    data: result,
+  });
+};
 
-// export { getAllOrders, createOrder };
+export { getAllOrders, createOrder };

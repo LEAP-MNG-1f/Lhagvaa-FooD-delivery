@@ -2,7 +2,7 @@ import { Category } from "../model/category.js";
 
 const createCategory = async (req, response) => {
   const result = await Category.create({
-    name: "Dessert",
+    name: "Breakfast",
   });
 };
 
