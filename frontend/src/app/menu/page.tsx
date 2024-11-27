@@ -4,45 +4,73 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 
 const MenuPage = () => {
-  const [isselected, setisSelected] = useState(true);
-  const [colorchange, setColorchange] = useState(true);
+  const [selectedButton, setSelectedButton] = useState<String>("");
+
+  const ChangeBgColor = (value: String) => {
+    setSelectedButton(value);
+  };
+
   return (
     <div className="flex items-center justify-center">
       <div className="container max-w-[1200px] flex items-center justify-between pt-8 pb-8 ">
         <Button
-          sx={{ backgroundColor: "green" }}
-          variant="contained"
-          className="w-[249px] h-[27px] pt-2 pb-2 pl-4 pr-4  text-lg "
+          onClick={() => {
+            ChangeBgColor("breakfast");
+          }}
+          sx={{
+            backgroundColor: selectedButton === "breakfast" ? "green" : "white",
+            color: selectedButton === "breakfast" ? "white" : "black",
+            borderColor: "#D6D8DB",
+            borderRadius: "8px",
+          }}
+          variant="outlined"
+          className="w-[249px] h-[27px] pt-2 pb-2 pl-4 pr-4 text-lg"
         >
           Breakfast
         </Button>
         <Button
+          onClick={() => {
+            ChangeBgColor("soup");
+          }}
           sx={{
-            color: "black",
+            backgroundColor: selectedButton === "soup" ? "green" : "white",
+            color: selectedButton === "soup" ? "white" : "black",
             borderColor: "#D6D8DB",
+            borderRadius: "8px",
           }}
           variant="outlined"
-          className="w-[249px]  h-[27px] pt-2 pb-2 pl-4 pr-4 font-medium text-lg "
+          className="w-[249px] h-[27px] pt-2 pb-2 pl-4 pr-4 font-medium text-lg"
         >
           Soup
         </Button>
         <Button
+          onClick={() => {
+            ChangeBgColor("maincourse");
+          }}
           sx={{
-            color: "black",
+            backgroundColor:
+              selectedButton === "maincourse" ? "green" : "white",
+            color: selectedButton === "maincourse" ? "white" : "black",
             borderColor: "#D6D8DB",
+            borderRadius: "8px",
           }}
           variant="outlined"
-          className="w-[249px]  h-[27px] pt-2 pb-2 pl-4 pr-4 font-medium text-lg "
+          className="w-[249px] h-[27px] pt-2 pb-2 pl-4 pr-4 font-medium text-lg"
         >
           Main Course
         </Button>
         <Button
+          onClick={() => {
+            ChangeBgColor("dessert");
+          }}
           sx={{
-            color: "black",
+            backgroundColor: selectedButton === "dessert" ? "green" : "white",
+            color: selectedButton === "dessert" ? "white" : "black",
             borderColor: "#D6D8DB",
+            borderRadius: "8px",
           }}
           variant="outlined"
-          className="w-[249px] h-[27px] pt-2 pb-2 pl-4 pr-4 font-medium text-lg "
+          className="w-[249px] h-[27px] pt-2 pb-2 pl-4 pr-4 font-medium text-lg"
         >
           Dessert
         </Button>
@@ -50,4 +78,5 @@ const MenuPage = () => {
     </div>
   );
 };
+
 export default MenuPage;
