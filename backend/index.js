@@ -1,56 +1,42 @@
 import express from "express";
 
-// import dotenv from "dotenv";
-import userRouter from "./routes/userRoute.js";
+import dotenv from "dotenv";
+import userRouter from "./routes/user.Route.js";
 import mongoose from "mongoose";
-
-mongoose.connect(
-  "mongodb+srv://Lhagvaa0102:Lhagvaa.0102@leap0102.k0ghj.mongodb.net/food-delivery"
-);
+import categoryRouter from "./routes/category.Route.js";
+import bodyParser from "body-parser";
+import foodRouter from "./routes/food.Route.js";
+import orderRouter from "./routes/order.Route.js";
+dotenv.config();
+mongoose.connect(process.env.MONGODB_CONNECT_URL);
 const server = express();
 const PORT = 8000;
 
-server.use("/api", userRouter);
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: true }));
 
+server.use("/api", userRouter);
+server.use("/api", categoryRouter);
+server.use("/api", foodRouter);
+server.use("/api", orderRouter);
+// cloudinary.config({
+//   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+//   api_key: process.env.CLOUDINARY_API_KEY,
+//   api_secret: process.env.CLOUDINARY_API_SECRET,
+// });
+
+// server.post("/image-upload", async (req, response) => {
+//   cloudinary.uploader
+//     .upload("./asset/Food.png", {
+//       resource_type: "image",
+//     })
+//     .then((result) => {
+//       console.log("success", JSON.stringify(result, null, 2));
+//     })
+//     .catch((error) => {
+//       console.log("error", JSON.stringify(error, null, 2));
+//     });
+// });
 server.listen(PORT, () => {
   console.log(`http:localhost:${PORT} ajillaj ehelle`);
 });
-
-// dotenv.config();
-// // cloudinary.config({
-// //   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-// //   api_key: process.env.CLOUDINARY_API_KEY,
-// //   api_secret: process.env.CLOUDINARY_API_SECRET,
-// // });
-
-// // server.post("/image-upload", async (req, response) => {
-// //   cloudinary.uploader
-// //     .upload("./asset/Food.png", {
-// //       resource_type: "image",
-// //     })
-// //     .then((result) => {
-// //       console.log("success", JSON.stringify(result, null, 2));
-// //     })
-// //     .catch((error) => {
-// //       console.log("error", JSON.stringify(error, null, 2));
-// //     });
-// // });
-// server.post("/create", async (req, response) => {
-//   const result = await product.create({
-//     name: "Clothes",
-//     year: 2000,
-//   });
-//   response.json({
-//     succes: true,
-//     data: result,
-//   });
-// });
-// server.delete("/delete", async (req, response) => {
-//   const result = await product.deleteOne({
-//     _id: "6743f255db2f6a6a6bdc5ddc",
-//   });
-//   response.json({
-//     succes: true,
-//     data: result,
-//   });
-// });

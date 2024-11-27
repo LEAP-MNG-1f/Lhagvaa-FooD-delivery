@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema({
-  userID: {
+  userId: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User",
     required: true,
@@ -10,32 +10,36 @@ const orderSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  foodsId: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: "Food",
-    required: true,
-  },
+  foodIds: [
+    {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "Food",
+      required: true,
+    },
+  ],
   totalPrice: {
-    type: Number,
+    type: String,
     required: true,
   },
   process: {
     type: String,
     enum: ["inProgress", "active", "delivered", "waiting"],
+    default: "active",
   },
   createdDate: {
     type: Date,
-    required: true,
+    default: () => Date.now(),
+    immutable: true,
   },
   district: {
     type: String,
     required: true,
   },
-  Khoroo: {
+  khoroo: {
     type: String,
     required: true,
   },
-  Apartment: {
+  apartment: {
     type: String,
     required: true,
   },
