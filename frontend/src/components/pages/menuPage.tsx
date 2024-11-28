@@ -2,7 +2,8 @@
 
 import { Button } from "@mui/material";
 import { useState } from "react";
-import BasicModal from "../order/OrderModal";
+import { OrderModal } from "../order/OrderModal";
+
 
 const MenuPage = () => {
   const [selectedButton, setSelectedButton] = useState<String>("");
@@ -75,6 +76,9 @@ const MenuPage = () => {
         >
           Dessert
         </Button>
+      </div>
+      <div>
+        <OrderModal />
       </div>
     </div>
   );

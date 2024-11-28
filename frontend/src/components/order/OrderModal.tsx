@@ -4,19 +4,22 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
+
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: "981px",
+  height: "564px",
   bgcolor: "background.paper",
-  border: "2px solid #000",
+
+  borderRadius: "16px",
   boxShadow: 24,
   p: 4,
 };
 
-export default function BasicModal() {
+export const OrderModal = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -41,4 +44,4 @@ export default function BasicModal() {
       </Modal>
     </div>
   );
-}
+};
