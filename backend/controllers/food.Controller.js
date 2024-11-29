@@ -36,9 +36,35 @@ const getAllFoods = async (req, response) => {
 const updateFood = async (req, response) => {
   try {
     const { name, image, ingeredient, price, category } = req.body;
+    const foodId = req.params[`id`];
+    const result = await Food.findByIdAndUpdate(foodId, {
+      name,
+      image,
+      ingeredient,
+      price,
+      category,
+    });
+    response.status(201).json({
+      succes: true,
+      data: result,
+    });
   } catch (error) {
     response.status(501).json({ error: "Cant update food" });
   }
 };
 
-export { createFood, getAllFoods };
+const deleteFood = async (req, response) => {
+  try {
+    const Id = req.params[`id`];
+    const result = await Food.findByIdAndDelete(Id);
+    response.status(201).json({
+      succes: true,
+      data: result,
+    });
+  } catch (error) {
+    response.status(501).json({
+      error: error,
+    });
+  }
+};
+export { createFood, getAllFoods, updateFood, deleteFood };

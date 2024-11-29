@@ -2,7 +2,7 @@
 
 import { Button } from "@mui/material";
 import { useState } from "react";
-import { OrderModal } from "../order/OrderModal";
+
 
 
 const MenuPage = () => {
@@ -77,9 +77,7 @@ const MenuPage = () => {
           Dessert
         </Button>
       </div>
-      <div>
-        <OrderModal />
-      </div>
+      <div></div>
     </div>
   );
 };

@@ -33,16 +33,15 @@ const getAllUsers = async (req, response) => {
 
 const deleteUser = async (req, response) => {
   try {
-    const result = await User.findByIdAndDelete({
-      _id: new ObjectId(""),
-    });
+    const Id = req.params["id"];
+    const result = await User.findByIdAndDelete(Id);
     response.status(201).json({
       succes: true,
       data: result,
     });
   } catch (error) {
-    response.status(501).json({ error: "User not found" });
+    response.status(501).json({ error: "Can't delete user" });
   }
 };
 
-export { createUser, getAllUsers };
+export { createUser, getAllUsers, deleteUser };

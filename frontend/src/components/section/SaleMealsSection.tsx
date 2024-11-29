@@ -1,4 +1,4 @@
-import { CategoryCard } from "../card/CategoryCard";
+import { FoodCard } from "../card/foodCard";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { CategoryIcon } from "../icons/CategoryIcon";
 export const SaleMealsSection = () => {
@@ -15,10 +15,10 @@ export const SaleMealsSection = () => {
           </p>
         </div>
         <div className="flex gap-6 mt-6">
-          <CategoryCard img="breakfast.png" name="breakfast" price={10000} />
-          <CategoryCard img="breakfast.png" name="breakf" price={10000} />
-          <CategoryCard img="breakfast.png" name="breakfast" price={10000} />
-          <CategoryCard img="breakfast.png" name="breakfast" price={10000} />
+          <FoodCard img="breakfast.png" name="breakfast" price={10000} />
+          <FoodCard img="breakfast.png" name="breakf" price={10000} />
+          <FoodCard img="breakfast.png" name="breakfast" price={10000} />
+          <FoodCard img="breakfast.png" name="breakfast" price={10000} />
         </div>
       </div>
       <div>
@@ -32,10 +32,10 @@ export const SaleMealsSection = () => {
           </p>
         </div>
         <div className="flex gap-6 mt-6">
-          <CategoryCard img="breakfast.png" name="breakfast" price={10000} />
-          <CategoryCard img="breakfast.png" name="breakf" price={10000} />
-          <CategoryCard img="breakfast.png" name="breakfast" price={10000} />
-          <CategoryCard img="breakfast.png" name="breakfast" price={10000} />
+          <FoodCard img="breakfast.png" name="breakfast" price={10000} />
+          <FoodCard img="breakfast.png" name="breakf" price={10000} />
+          <FoodCard img="breakfast.png" name="breakfast" price={10000} />
+          <FoodCard img="breakfast.png" name="breakfast" price={10000} />
         </div>
       </div>
       <div>
@@ -49,10 +49,10 @@ export const SaleMealsSection = () => {
           </p>
         </div>
         <div className="flex gap-6 mt-6">
-          <CategoryCard img="breakfast.png" name="breakfast" price={10000} />
-          <CategoryCard img="breakfast.png" name="breakf" price={10000} />
-          <CategoryCard img="breakfast.png" name="breakfast" price={10000} />
-          <CategoryCard img="breakfast.png" name="breakfast" price={10000} />
+          <FoodCard img="breakfast.png" name="breakfast" price={10000} />
+          <FoodCard img="breakfast.png" name="breakf" price={10000} />
+          <FoodCard img="breakfast.png" name="breakfast" price={10000} />
+          <FoodCard img="breakfast.png" name="breakfast" price={10000} />
         </div>
       </div>
       <div>
@@ -66,10 +66,10 @@ export const SaleMealsSection = () => {
           </p>
         </div>
         <div className="flex gap-6 mt-6">
-          <CategoryCard img="breakfast.png" name="breakfast" price={10000} />
-          <CategoryCard img="breakfast.png" name="breakf" price={10000} />
-          <CategoryCard img="breakfast.png" name="breakfast" price={10000} />
-          <CategoryCard img="breakfast.png" name="breakfast" price={10000} />
+          <FoodCard img="breakfast.png" name="breakfast" price={10000} />
+          <FoodCard img="breakfast.png" name="breakf" price={10000} />
+          <FoodCard img="breakfast.png" name="breakfast" price={10000} />
+          <FoodCard img="breakfast.png" name="breakfast" price={10000} />
         </div>
       </div>
     </div>
