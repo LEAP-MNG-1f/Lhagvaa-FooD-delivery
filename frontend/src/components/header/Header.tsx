@@ -1,8 +1,8 @@
 "use client";
 
-import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { PineconeLogo } from "../icons/PineconeLogo";
 import Link from "next/link";
+import { CartDrawer } from "../cart/CartDrawer";
 
 export const Header = () => {
   return (
@@ -22,10 +22,7 @@ export const Header = () => {
             </Link>
           </div>
           <div>
-            <button className="flex gap-2">
-              <ShoppingBasketIcon />
-              Cart
-            </button>
+            <CartDrawer />
           </div>
         </div>
       </div>
