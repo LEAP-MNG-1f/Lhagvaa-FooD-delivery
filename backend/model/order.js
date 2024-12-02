@@ -43,6 +43,18 @@ const orderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  phoneNumber: {
+    type: String,
+    required: true,
+  },
+  paymentType: {
+    type: String,
+    enum: ["cash, card"],
+  },
+  detail: {
+    type: String,
+    required: true,
+  },
 });
 
 export const Order = mongoose.model("Order", orderSchema);
