@@ -7,6 +7,7 @@ import bodyParser from "body-parser";
 import foodRouter from "./routes/food.Route.js";
 import orderRouter from "./routes/order.Route.js";
 import cloudinary from "cloudinary";
+import cors from "cors";
 dotenv.config();
 mongoose.connect(`${process.env.MONGODB_CONNECT_URL}/food-delivery`);
 const server = express();
@@ -18,6 +19,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+server.use(cors());
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 
