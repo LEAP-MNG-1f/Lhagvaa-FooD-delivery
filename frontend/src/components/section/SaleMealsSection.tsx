@@ -1,6 +1,7 @@
-import { FoodCard } from "../card/foodCard";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { CategoryIcon } from "../icons/CategoryIcon";
+import { FoodCard } from "../card/foodCard";
+
 export const SaleMealsSection = () => {
   return (
     <div className="container max-w-[1200px] mt-28 flex flex-col gap-20">

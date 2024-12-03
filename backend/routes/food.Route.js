@@ -12,5 +12,4 @@ foodRouter.post("/food", createFood);
 foodRouter.put(`/food/:id`, updateFood);
 foodRouter.delete(`/food/:id`, deleteFood);
 
-
 export default foodRouter;

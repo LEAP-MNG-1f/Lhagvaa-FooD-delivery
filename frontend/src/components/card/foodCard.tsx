@@ -21,16 +21,33 @@ type FoodCardType = {
   price: number;
   ingeredient?: string;
 };
-export const FoodCard = (Cards: FoodCardType) => {
+type CartItemType = {
+  img: string;
+  name: string;
+  price: number;
+  quantity: number;
+};
+export const FoodCard = (
+  Cards: FoodCardType & { handleAddtoCart: (item: CartItemType) => void }
+) => {
   const [open, setOpen] = useState(false);
-  const [cart, SetCart] = useState([]);
+  const [quantity, SetQuantity] = useState(1);
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
-  const handleAddtoCart = () => {};
+  const handleAddtoCart = () => {
+    const item = {
+      img: Cards.img,
+      name: Cards.name,
+      price: Cards.price,
+      quantity,
+    };
+    Cards.handleAddtoCart(item);
+    handleClose();
+  };
   return (
     <div>
       <Button onClick={handleClickOpen}>
