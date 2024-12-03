@@ -3,14 +3,15 @@ import Button from "@mui/material/Button";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { Fragment, useState } from "react";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ClearIcon from "@mui/icons-material/Clear";
+import { useFoodContext } from "../context/DataContext";
+// import { useCategorizedFoodContext } from "../context/CartContext";
+import Link from "next/link";
 type Anchor = "right";
-type CartItemType = {
-  img: string;
-  name: string;
-  price: number;
-  quantity: number;
-};
-export const CartDrawer = ({ cart }: { cart: CartItemType[] }) => {
+
+export const CartDrawer = () => {
+  const { increaseQuantity, decreaseQuantity } = useFoodContext();
+  // const { cartFoods, totalPrice } = useCategorizedFoodContext();
   const [state, setState] = useState({
     right: false,
   });
@@ -48,23 +49,71 @@ export const CartDrawer = ({ cart }: { cart: CartItemType[] }) => {
                 <ArrowBackIosNewIcon />
                 <p className="text-xl font-black">Таны сагс</p>
               </div>
-              {/* <div>
-                {cart.map((item, index) => (
-                  <div key={index} className="flex justify-between p-2">
-                    <div className="flex gap-2">
+              {/* {cartFoods?.map((food) => {
+                return (
+                  <div
+                    key={food._id}
+                    className="p-4 border-t flex gap-4 border-b"
+                  >
+                    <div>
                       <img
-                        src={item.img}
-                        alt={item.name}
-                        className="w-[60px] h-[60px] object-cover"
+                        className="border w-[245px] h-[150px] "
+                        src={food?.image}
+                        alt=""
                       />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <div className="flex justify-between">
+                        <div>
+                          <p className="font-semibold">{food?.name}</p>
+                          <p className="text-lg text-[#18BA51]">
+                            {food?.price}₮
+                          </p>
+                        </div>
+                        <button>
+                          <ClearIcon />
+                        </button>
+                      </div>
+                      <div className="text-[#767676]  ">
+                        {food?.ingeredient}
+                      </div>
                       <div>
-                        <p className="font-semibold">{item.name}</p>{" "}
-                        <p className="text-[#18BA51]">{item.price}₮</p>{" "}
-                        <p>Quantity: {item.quantity}</p>{" "}
+                        <button onClick={decreaseQuantity}>-</button>
+                        <p>{food?.quantity}</p>
+                        <button onClick={increaseQuantity}>+</button>
                       </div>
                     </div>
                   </div>
-                ))}
+                );
+              })}
+              <div className="w-[586px] h-[172px] px-[8] py-[30px] flex justify-center items-center  gap-[10px]  border-t border-t-[#BBBECD33] sticky bottom-0">
+                <div className="w-[256px] flex flex-col">
+                  <p className="text-[18px] font-[400] leading-[27px] text-[#5E6166]">
+                    Нийт төлөх дүн
+                  </p>
+                  <p className="text-[18px] font-[700] leading-[27px]">
+                    {totalPrice} ₮
+                  </p>
+                </div>
+                {cartFoods && cartFoods?.length > 0 ? (
+                  <Link
+                    href={"./confirmation"}
+                    className="w-[256px] h-[48px] rounded-1 text-[16px] font-[400] leading-[19.09px] bg-[#18BA51] text-white px-4 py-2 flex justify-center items-center"
+                  >
+                    Захиалах
+                  </Link>
+                ) : (
+                  <button
+                    className="w-[256px] h-[48px] rounded-1 text-[16px] font-[400] leading-[19.09px] bg-[#18BA51] text-white px-4 py-2 flex justify-center items-center"
+                    onClick={() =>
+                      alert(
+                        "Таны сагс хоосон байна. Захиалах бүтээгдэхүүнээ сонгоно уу"
+                      )
+                    }
+                  >
+                    Захиалах
+                  </button>
+                )}
               </div> */}
             </div>
           </Drawer>
