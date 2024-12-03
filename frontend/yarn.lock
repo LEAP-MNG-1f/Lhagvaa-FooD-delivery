@@ -618,7 +618,14 @@
     "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
 
-"@types/lodash@^4.17.13":
+"@types/lodash.add@^3.7.9":
+  version "3.7.9"
+  resolved "https://registry.yarnpkg.com/@types/lodash.add/-/lodash.add-3.7.9.tgz#122a6c92f323323039b68cb57536d6dcab25c0c7"
+  integrity sha512-bB8Wf/WOgrOPeid1tgj2rGKwZEMDLXzJjUp0/RsBY+gxYgFhGlQqDEuYExdIA1lrzHoygqmOUd0AQSBh3aUk4g==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*", "@types/lodash@^4.17.13":
   version "4.17.13"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.17.13.tgz#786e2d67cfd95e32862143abe7463a7f90c300eb"
   integrity sha512-lfx+dftrEZcdBPczf9d0Qv0x+j/rfNCMuC6OcfXmO8gkfeNAY88PgKUbvG56whcN23gc27yenwF6oJZXGFpYxg==

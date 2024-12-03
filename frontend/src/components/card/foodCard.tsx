@@ -6,6 +6,11 @@ import AddIcon from "@mui/icons-material/Add";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import RemoveIcon from "@mui/icons-material/Remove";
+// import {
+//   CartItemsType,
+//   useCategorizedFoodContext,
+// } from "../context/CartContext";
+import { useFoodContext } from "../context/DataContext";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -16,49 +21,43 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 type FoodCardType = {
+  _id: string;
   img: string;
   name: string;
-  price: number;
-  ingeredient?: string;
+  price: string;
+  ingeredient: string;
 };
-type CartItemType = {
-  img: string;
-  name: string;
-  price: number;
-  quantity: number;
-};
-export const FoodCard = (
-  Cards: FoodCardType & { handleAddtoCart: (item: CartItemType) => void }
-) => {
+
+export const FoodCard = (Cards: FoodCardType) => {
+  const { quantity, increaseQuantity, decreaseQuantity } = useFoodContext();
+  // const { addToCart } = useCategorizedFoodContext();
   const [open, setOpen] = useState(false);
-  const [quantity, SetQuantity] = useState(1);
+
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
-  const handleAddtoCart = () => {
-    const item = {
-      img: Cards.img,
-      name: Cards.name,
-      price: Cards.price,
-      quantity,
-    };
-    Cards.handleAddtoCart(item);
-    handleClose();
-  };
+
+  // const handleAddToCart = () => {
+  //   addToCart(_id, img, name, ingeredient, price, quantity);
+  //   setOpen(false);
+  // };
+
   return (
     <div>
       <Button onClick={handleClickOpen}>
         <div className="">
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-[14px]">
             <img
               className="w-[292px] h-[186px] rounded-2xl"
-              src={`${Cards.img}`}
+              src={`${Cards.img} `}
             />
             <div className="flex flex-col items-start pl-[10px]">
-              <p className="text-[#000] font-semibold text-lg ">{Cards.name}</p>
+              <p className="text-[#000] font-semibold text-lg line-clamp-1">
+                {Cards.name}
+              </p>
               <p className="text-[#18BA51] font-semibold text-lg">
                 {Cards.price}₮
               </p>
@@ -78,7 +77,7 @@ export const FoodCard = (
         aria-labelledby="customized-dialog-title"
         open={open}
       >
-        <div className="w-[981px] h-[500px] p-8 flex ">
+        <div className="w-[981px] h-[500px] p-8 flex gap-[33px]">
           <div className=" ">
             <img className="w-screen h-full " src={Cards.img} />
           </div>
@@ -88,7 +87,7 @@ export const FoodCard = (
                 <CloseIcon />
               </IconButton>
             </div>
-            <div className="flex gap-8 flex-col">
+            <div className="flex gap-[20px] flex-col">
               <div>
                 <p className="font-bold text-[28px]">{Cards.name}</p>
                 <p className="text-[#18BA51] font-semibold text-lg">
@@ -98,7 +97,7 @@ export const FoodCard = (
               <div className="flex flex-col gap-3 ">
                 <p className="text-lg font-semibold ">Орц</p>
                 <p className="bg-[#F6F6F6] text-[#767676] p-2 ">
-                  {Cards.ingeredient}, hello, hi
+                  {Cards.ingeredient}
                 </p>
               </div>
               <div>
@@ -106,6 +105,7 @@ export const FoodCard = (
               </div>
               <div className="flex justify-between">
                 <Button
+                  onClick={decreaseQuantity}
                   sx={{
                     border: "10px",
                     backgroundColor: "#18BA51",
@@ -117,8 +117,9 @@ export const FoodCard = (
                 >
                   <RemoveIcon />
                 </Button>
-                <p className="pl-8 pr-8 pt-2 pb-2">1</p>
+                <p className="pl-8 pr-8 pt-2 pb-2">{quantity}</p>
                 <Button
+                  onClick={increaseQuantity}
                   sx={{
                     border: "10px",
                     backgroundColor: "#18BA51",
@@ -141,8 +142,7 @@ export const FoodCard = (
                   color: "white",
                 }}
                 autoFocus
-                onClick={handleClose}
-                onSubmit={handleAddtoCart}
+                // onClick={handleAddToCart}
               >
                 Сагслах
               </Button>

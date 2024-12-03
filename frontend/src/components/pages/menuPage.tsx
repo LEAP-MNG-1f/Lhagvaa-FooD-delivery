@@ -1,85 +1,49 @@
 "use client";
-
 import { Button } from "@mui/material";
-import { useState } from "react";
 
-
+import { useFoodContext } from "../context/DataContext";
+import { FoodCard } from "../card/foodCard";
 
 const MenuPage = () => {
-  const [selectedButton, setSelectedButton] = useState<String>("");
-
-  const ChangeBgColor = (value: String) => {
-    setSelectedButton(value);
-  };
-
+  const { categories, handleSelectedCategory, selectedCategory, foods } =
+    useFoodContext();
   return (
-    <div className="flex items-center justify-center">
-      <div className="container max-w-[1200px] flex items-center justify-between pt-8 pb-8 ">
-        <Button
-          onClick={() => {
-            ChangeBgColor("breakfast");
-          }}
-          sx={{
-            backgroundColor: selectedButton === "breakfast" ? "green" : "white",
-            color: selectedButton === "breakfast" ? "white" : "black",
-            borderColor: "#D6D8DB",
-            borderRadius: "8px",
-          }}
-          variant="outlined"
-          className="w-[249px] h-[27px] pt-2 pb-2 pl-4 pr-4 text-lg"
-        >
-          Breakfast
-        </Button>
-        <Button
-          onClick={() => {
-            ChangeBgColor("soup");
-          }}
-          sx={{
-            backgroundColor: selectedButton === "soup" ? "green" : "white",
-            color: selectedButton === "soup" ? "white" : "black",
-            borderColor: "#D6D8DB",
-            borderRadius: "8px",
-          }}
-          variant="outlined"
-          className="w-[249px] h-[27px] pt-2 pb-2 pl-4 pr-4 font-medium text-lg"
-        >
-          Soup
-        </Button>
-        <Button
-          onClick={() => {
-            ChangeBgColor("maincourse");
-          }}
-          sx={{
-            backgroundColor:
-              selectedButton === "maincourse" ? "green" : "white",
-            color: selectedButton === "maincourse" ? "white" : "black",
-            borderColor: "#D6D8DB",
-            borderRadius: "8px",
-          }}
-          variant="outlined"
-          className="w-[249px] h-[27px] pt-2 pb-2 pl-4 pr-4 font-medium text-lg"
-        >
-          Main Course
-        </Button>
-        <Button
-          onClick={() => {
-            ChangeBgColor("dessert");
-          }}
-          sx={{
-            backgroundColor: selectedButton === "dessert" ? "green" : "white",
-            color: selectedButton === "dessert" ? "white" : "black",
-            borderColor: "#D6D8DB",
-            borderRadius: "8px",
-          }}
-          variant="outlined"
-          className="w-[249px] h-[27px] pt-2 pb-2 pl-4 pr-4 font-medium text-lg"
-        >
-          Dessert
-        </Button>
+    <div className="w-full mt-[89px] mb-[32px] flex justify-center ">
+      <div className="w-[1200px] flex flex-col">
+        <div className="flex justify-between">
+          {categories.map((category) => {
+            return (
+              <Button
+                onClick={() => {
+                  handleSelectedCategory(category.name);
+                }}
+                key={category._id}
+                className={`!w-[280.5px] !h-[43px] !rounded-[8px] !border-1 ${
+                  category?.name === selectedCategory
+                    ? "!bg-[#18BA51] !text-white"
+                    : "!bg-white !text-black "
+                } `}
+                variant="contained"
+              >
+                {category?.name}
+              </Button>
+            );
+          })}
+        </div>
+        <div className="w-[1200px] grid grid-cols-4 mt-[80px] gap-6">
+          {foods?.map((food) => {
+            return (
+              <FoodCard
+                key={food._id}
+                img={food?.image}
+                price={food?.price}
+                name={food?.name}
+              />
+            );
+          })}
+        </div>
       </div>
-      <div></div>
     </div>
   );
 };
-
 export default MenuPage;

@@ -33,6 +33,25 @@ const getAllFoods = async (req, response) => {
   }
 };
 
+const getSelectedFoods = async (req, response) => {
+  try {
+    const { selectedCategory } = req.query;
+    const result = await Food.find().populate("category");
+    const SelectedFoods = result.filter((foods) => {
+      if (foods?.category.name === selectedCategory) {
+        return foods;
+      }
+    });
+
+    response.status(201).json({
+      success: true,
+      data: SelectedFoods,
+    });
+  } catch (error) {
+    response.status(501).json({ error: error });
+  }
+};
+
 const updateFood = async (req, response) => {
   try {
     const { name, image, ingeredient, price, category } = req.body;
@@ -67,4 +86,4 @@ const deleteFood = async (req, response) => {
     });
   }
 };
-export { createFood, getAllFoods, updateFood, deleteFood };
+export { createFood, getAllFoods, updateFood, deleteFood, getSelectedFoods };
