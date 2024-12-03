@@ -1,8 +1,8 @@
 "use client";
 
+import { CartDrawer } from "../cart/CartDrawer";
 import { PineconeLogo } from "../icons/PineconeLogo";
 import Link from "next/link";
-import { CartDrawer } from "../cart/CartDrawer";
 
 export const Header = () => {
   return (
